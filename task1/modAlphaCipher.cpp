@@ -12,7 +12,7 @@ modAlphaCipher::modAlphaCipher(const string& skey)
 
 string modAlphaCipher::encrypt(const string& open_text)
 {
-   vector<int> work = convert(open_text);
+    vector<int> work = convert(open_text);
     for(unsigned i=0; i < work.size(); i++) {
         work[i] = (work[i] + key[i % key.size()]) % alphaNum.size();
     }
@@ -30,7 +30,7 @@ string modAlphaCipher::decrypt(const string& cipher_text)
 
 inline vector<int> modAlphaCipher::convert(const string& s)
 {
-   vector<int> result;
+    vector<int> result;
     locale loc("ru_RU.UTF-8"); // русская локаль для корректной смены регистра
     wstring_convert<codecvt_utf8<wchar_t>, wchar_t> codec; //кодек UTF-8
     wstring ws = codec.from_bytes(s); // перекодируем
@@ -52,16 +52,16 @@ inline string modAlphaCipher::convert(const vector<int>& v)
     }
     result = codec.to_bytes(result_s);
     return result;
-}
-
-    std::string result;
-    locale loc("ru_RU.UTF-8"); // русская локаль для корректной смены регистра
-    wstring_convert<codecvt_utf8<wchar_t>, wchar_t> codec; //кодек UTF-8
-    wstring ws = codec.from_bytes(numAlpha);
-    wstring result_s = codec.from_bytes("");
-    for (unsigned i=0; i<v.size(); i++) {
-        result_s.push_back(ws[v[i]]);
+    {
+        string result;
+        locale loc("ru_RU.UTF-8"); // русская локаль для корректной смены регистра
+        wstring_convert<codecvt_utf8<wchar_t>, wchar_t> codec; //кодек UTF-8
+        wstring ws = codec.from_bytes(numAlpha);
+        wstring result_s = codec.from_bytes("");
+        for (unsigned i = 0; i < v.size(); i++) {
+            result_s.push_back(ws[v[i]]);
+        }
+        result = codec.to_bytes(result_s);
+        return result;
     }
-    result = codec.to_bytes(result_s);
-    return result;
 }
