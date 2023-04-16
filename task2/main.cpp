@@ -28,7 +28,7 @@ int main(int argc, char **argv)
             wcin>>text;
                 if (op==1) {
                     wcout<<L"ЗАШИФРОВАННАЯ СТРОКА: "<<cipher.zakodirovatCipher(cipher, text)<<endl;
-                } else if (op==2 ){
+                } else if (op==2 ) {
                     wcout<<L"РАСШИФРОВАННАЯ СТРОКА: "<<cipher.raskodirovatCipher(cipher, text)<<endl;
                 }
                 }
